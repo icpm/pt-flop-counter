@@ -1,4 +1,6 @@
-from .utils import *
+import torch.nn as nn
+
+from utils import *
 
 register_hooks = {
     nn.Conv2d: count_conv2d,

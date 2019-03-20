@@ -1,8 +1,4 @@
-import logging
-
-import torch
-import torch.nn as nn
-from .count_hooks import *
+from .utils import *
 
 register_hooks = {
     nn.Conv2d: count_conv2d,
@@ -33,6 +29,7 @@ register_hooks = {
 
 def profile(model, input_size, custom_ops={}, device="cpu"):
     handler_collection = []
+
     def add_hooks(m):
         if len(list(m.children())) > 0:
             return
